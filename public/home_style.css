@@ -1,0 +1,7 @@
+body {
+    background: {{bg_color}};
+}
+
+p {
+    color: {{text_color}};
+}
