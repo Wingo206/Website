@@ -1,0 +1,17 @@
+.title-section {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 200, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+}
+
+.title-section-content {
+  max-width: 800px;
+}
+
+.title-section-spacer {
+  flex: 1;
+}
