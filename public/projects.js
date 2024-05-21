@@ -1,33 +1,137 @@
 console.log("hello");
 
+let numColumns = 3;
 let selectedIndex = -1;
+let projects = [
+    {
+        name: "RASCAL",
+        pageContents: "<p>hello</p>"
+    },
+    {
+        name: "Mr. Pizza",
+        pageContents: "<p>yello</p>"
+    },
+    {
+        name: "Perceptron and Neural Network",
+        pageContents: ""
+    },
+    {
+        name: "RU On Time",
+        pageContents: ""
+    },
+    {
+        name: "Musik",
+        pageContents: ""
+    },
+    {
+        name: "Recyclinator",
+        pageContents: ""
+    },
+    {
+        name: "Cougar Script Editor",
+        pageContents: ""
+    },
+    {
+        name: "Autonomous Laser Turret",
+        pageContents: ""
+    },
+    {
+        name: "Photo Gallery",
+        pageContents: ""
+    },
+    {
+        name: "Chess App",
+        pageContents: ""
+    },
+    {
+        name: "Flight Reservation",
+        pageContents: ""
+    },
+    {
+        name: "Robo James",
+        pageContents: ""
+    },
+    {
+        name: "A* Algorithm Showcase",
+        pageContents: ""
+    }
+];
+
+populateProjects();
+updateDisplay(-1);
 
 // populate the projects with data
-function populateProjectsGrid() {
-    let projects = ["RASCAL", "Mr. Pizza", "test 1", "test2"];
+function populateProjects() {
+
+    let columns = [];
+    for (let i = 0; i < numColumns; i++) {
+        columns.push(fromHTML(`<div class="projects-grid-column"></div>`));
+        // for (let j = 0; j < i; j++) {
+        //     columns[i].appendChild(fromHTML(`<div class="grow-spacer"></div>`));
+        // }
+    }
+
+    let projectsList = document.getElementById("projects-list");
+
+    // add the project cards to the columns
     for (let i = 0; i < projects.length; i++) {
         let project = projects[i];
-        let projectsSection = document.getElementById("projects-grid");
 
         let projectCard = fromHTML(
             `<div class="project-card" onclick="projectCardClick(${i})">
-                <p class="project-title">${project}</p>
+                <p class="project-title">${project.name}</p>
             </div>`
         );
 
-        projectsSection.appendChild(projectCard);
+        columns[i % numColumns].appendChild(projectCard);
+        columns[i % numColumns].appendChild(fromHTML(`<div class="projects-spacer"></div>`));
+        // columns[i % numColumns].appendChild(fromHTML(`<div class="grow-spacer"></div>`));
+        // columns[i % numColumns].appendChild(fromHTML(`<div class="grow-spacer"></div>`));
+
+        // add a copy to the list
+        let copy = projectCard.cloneNode(true);
+        copy.classList.add("shrink");
+        projectsList.appendChild(copy);
+        projectsList.appendChild(fromHTML(`<div class="projects-spacer"></div>`));
+
+
+    }
+
+    // add the columns to the projects grid
+    let grid = document.getElementById("projects-grid");
+    for (let i = 0; i < numColumns; i++) {
+        grid.appendChild(columns[i]);
+        if (i < numColumns - 1) {
+            grid.appendChild(fromHTML(`<div class="projects-spacer"></div>`));
+        }
     }
 }
+
+
 /**
  * updates the display based on the selected index
  */
 function updateDisplay(index) {
     // none selected
     if (index == -1) {
+        document.getElementById('projects-grid').classList.remove("hidden");
+        document.getElementById('projects-detailed-view').classList.add("hidden");
         return;
     }
 
     // project selected
+    let project = projects[index];
+    document.getElementById('projects-grid').classList.add("hidden");
+    document.getElementById('projects-detailed-view').classList.remove("hidden");
+    let projectDetailsSection = document.getElementById("project-details");
+    let projectTitle = fromHTML(`<h2 class="section-header">${project.name}</h2>`);
+    let details = fromHTML(project.pageContents);
+
+    while (projectDetailsSection.firstChild) {
+        projectDetailsSection.removeChild(projectDetailsSection.lastChild);
+    }
+    projectDetailsSection.appendChild(projectTitle);
+    details.childNodes.values().forEach(n => projectDetailsSection.append(n));
 }
 
 window.projectCardClick = (index) => {
@@ -55,3 +159,4 @@ function fromHTML(html, trim = true) {
     if (result.length === 1) return result[0];
     return result;
 }
+
