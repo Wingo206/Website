@@ -55,9 +55,11 @@ body {
 
 h1,
 h2 {
-  color: {{text_color}};
+  /* color: {{text_color}}; */
+  color: #3a3845;
 }
 
 p {
-  color: {{text_color}};
+  /* color: {{text_color}}; */
+  color: #3a3845;
 }
