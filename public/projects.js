@@ -116,11 +116,7 @@ window.updateProjectsDisplay = async (index) => {
     let project = projects[index];
     document.getElementById('projects-grid').classList.add("hidden");
     document.getElementById('projects-detailed-view').classList.remove("hidden");
-    // get details
-    let detailsHTML = await new Promise(resolve => {
-        fetch(`/project_pages/${project.name}.html`).then((res) => resolve(res.text()))
-    })
-    let details = fromHTML(detailsHTML)
+
     // set details
     let projectDetails = document.getElementById("project-details");
     while (projectDetails.firstChild) {
@@ -133,7 +129,12 @@ window.updateProjectsDisplay = async (index) => {
         </button>
         </div>`))
     projectDetails.appendChild(fromHTML(` <h2 class="section-header">${project.name}</h2> `))
-    // let details = fromHTML(project.pageContents);
+
+    // get details
+    let detailsHTML = await new Promise(resolve => {
+        fetch(`/project_pages/${project.name}.html`).then((res) => resolve(res.text()))
+    })
+    let details = fromHTML(detailsHTML)
     details.childNodes.values().forEach(n => projectDetails.appendChild(n));
 }
 
