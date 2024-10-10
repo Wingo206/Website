@@ -132,7 +132,7 @@ window.updateProjectsDisplay = async (index) => {
 
     // get details
     let detailsHTML = await new Promise(resolve => {
-        fetch(`/project_pages/${project.name}.html`).then((res) => resolve(res.text()))
+        fetch(`project_pages/${project.name}.html`).then((res) => resolve(res.text()))
     })
     let details = fromHTML(detailsHTML)
     details.childNodes.values().forEach(n => projectDetails.appendChild(n));
