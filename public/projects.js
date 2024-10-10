@@ -5,7 +5,7 @@ let selectedIndex = -1;
 let projects = [
     {
         name: "RASCAL",
-        pageContents: "<p>hello</p>"
+        pageContents: `<p>hello</p>`
     },
     {
         name: "Mr. Pizza",
@@ -57,18 +57,12 @@ let projects = [
     }
 ];
 
-populateProjects();
-updateDisplay(-1);
-
 // populate the projects with data
 function populateProjects() {
 
     let columns = [];
     for (let i = 0; i < numColumns; i++) {
         columns.push(fromHTML(`<div class="projects-grid-column"></div>`));
-        // for (let j = 0; j < i; j++) {
-        //     columns[i].appendChild(fromHTML(`<div class="grow-spacer"></div>`));
-        // }
     }
 
     let projectsList = document.getElementById("projects-list");
@@ -78,15 +72,13 @@ function populateProjects() {
         let project = projects[i];
 
         let projectCard = fromHTML(
-            `<div class="project-card" onclick="projectCardClick(${i})">
+            `<div class="project-card" onclick="updateProjectsDisplay(${i})">
                 <p class="project-title">${project.name}</p>
             </div>`
         );
 
         columns[i % numColumns].appendChild(projectCard);
         columns[i % numColumns].appendChild(fromHTML(`<div class="projects-spacer"></div>`));
-        // columns[i % numColumns].appendChild(fromHTML(`<div class="grow-spacer"></div>`));
-        // columns[i % numColumns].appendChild(fromHTML(`<div class="grow-spacer"></div>`));
 
         // add a copy to the list
         let copy = projectCard.cloneNode(true);
@@ -111,7 +103,8 @@ function populateProjects() {
 /**
  * updates the display based on the selected index
  */
-function updateDisplay(index) {
+window.updateProjectsDisplay = async (index) => {
+    console.log(index);
     // none selected
     if (index == -1) {
         document.getElementById('projects-grid').classList.remove("hidden");
@@ -123,21 +116,26 @@ function updateDisplay(index) {
     let project = projects[index];
     document.getElementById('projects-grid').classList.add("hidden");
     document.getElementById('projects-detailed-view').classList.remove("hidden");
-    let projectDetailsSection = document.getElementById("project-details");
-    let projectTitle = fromHTML(`<h2 class="section-header">${project.name}</h2>`);
-    let details = fromHTML(project.pageContents);
-
-    while (projectDetailsSection.firstChild) {
-        projectDetailsSection.removeChild(projectDetailsSection.lastChild);
+    // get details
+    let detailsHTML = await new Promise(resolve => {
+        fetch(`/project_pages/${project.name}.html`).then((res) => resolve(res.text()))
+    })
+    let details = fromHTML(detailsHTML)
+    // set details
+    let projectDetails = document.getElementById("project-details");
+    while (projectDetails.firstChild) {
+        projectDetails.removeChild(projectDetails.lastChild);
     }
-    projectDetailsSection.appendChild(projectTitle);
-    details.childNodes.values().forEach(n => projectDetailsSection.append(n));
+    projectDetails.appendChild(fromHTML(
+    `<div class="project-details-header">
+    <button class="project-details-x" onclick="updateProjectsDisplay(-1)">
+        <p class="project-details-x-text">X</p>
+        </button>
+        </div>`))
+    projectDetails.appendChild(fromHTML(` <h2 class="section-header">${project.name}</h2> `))
+    // let details = fromHTML(project.pageContents);
+    details.childNodes.values().forEach(n => projectDetails.appendChild(n));
 }
-
-window.projectCardClick = (index) => {
-    console.log("Project " + projects[index] + " was clicked.");
-    updateDisplay(index);
-};
 
 /**
  * @param {String} HTML representing a single element.
@@ -160,3 +158,5 @@ function fromHTML(html, trim = true) {
     return result;
 }
 
+populateProjects();
+window.updateProjectsDisplay(-1);
