@@ -134,7 +134,7 @@ window.updateProjectsDisplay = async (index) => {
 
     // page contents
     let detailsHTML = await new Promise(resolve => {
-        fetch(`/project_pages/${project.name}.html`).then((res) => resolve(res.text()))
+        fetch(`project_pages/${project.name}.html`).then((res) => resolve(res.text()))
     })
     detailsString += detailsHTML
 
