@@ -5,55 +5,46 @@ let selectedIndex = -1;
 let projects = [
     {
         name: "RASCAL",
-        pageContents: `<p>hello</p>`
+        tags: ["Linux", "ROS", "Python", "PyTorch", "OpenCV", "Flask", "Virtual Box"],
+        start_date: "May 2022",
+        end_date: "August 2024"
     },
     {
         name: "Mr. Pizza",
-        pageContents: "<p>yello</p>"
+        tags: ["Node.js", "SQL", "NLP", "HTML", "Javascript"]
     },
     {
         name: "Perceptron and Neural Network",
-        pageContents: ""
     },
     {
         name: "RU On Time",
-        pageContents: ""
     },
     {
         name: "Musik",
-        pageContents: ""
     },
     {
         name: "Recyclinator",
-        pageContents: ""
     },
     {
         name: "Cougar Script Editor",
-        pageContents: ""
     },
     {
         name: "Autonomous Laser Turret",
-        pageContents: ""
     },
     {
         name: "Photo Gallery",
-        pageContents: ""
     },
     {
         name: "Chess App",
-        pageContents: ""
     },
     {
         name: "Flight Reservation",
-        pageContents: ""
     },
     {
         name: "Robo James",
-        pageContents: ""
     },
     {
         name: "A* Algorithm Showcase",
-        pageContents: ""
     }
 ];
 
@@ -122,20 +113,34 @@ window.updateProjectsDisplay = async (index) => {
     while (projectDetails.firstChild) {
         projectDetails.removeChild(projectDetails.lastChild);
     }
-    projectDetails.appendChild(fromHTML(
-    `<div class="project-details-header">
+    let detailsString = "";
+    detailsString += `<div class="project-details-header">
+    <h2 class="section-header">${project.name}</h2>
+    <div style="flex-grow:1"></div>
     <button class="project-details-x" onclick="updateProjectsDisplay(-1)">
         <p class="project-details-x-text">X</p>
         </button>
-        </div>`))
-    projectDetails.appendChild(fromHTML(` <h2 class="section-header">${project.name}</h2> `))
+        </div>`
+    // header
+    // detailsString += `<h2 class="section-header">${project.name}</h2>`
+    // tags
+    if (project.tags) {
+        detailsString += '<p>' + project.tags.map(t => t).join(", ") + '</p>'
+    }
+    // dates
+    if (project.start_date) {
+        detailsString += `<p>${project.start_date}${(project.end_date) ? " - " + project.end_date : ""}</p>`
+    }
 
-    // get details
+    // page contents
     let detailsHTML = await new Promise(resolve => {
         fetch(`/project_pages/${project.name}.html`).then((res) => resolve(res.text()))
     })
-    let details = fromHTML(detailsHTML)
-    details.childNodes.values().forEach(n => projectDetails.appendChild(n));
+    detailsString += detailsHTML
+
+    // add to the section
+    let details = fromHTML(detailsString)
+    Array.from(details).forEach(n => {console.log(n);projectDetails.appendChild(n)});
 }
 
 /**

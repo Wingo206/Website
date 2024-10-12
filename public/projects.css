@@ -1,6 +1,6 @@
 .projects-section {
   width: 100%;
-  max-width: 800px;
+  max-width: 1000px;
 }
 
 .projects-grid {
@@ -51,32 +51,6 @@
   align-items: start;
 }
 
-.project-details-x {
-  align-self: end;
-  width: 30;
-  height: 30;
-
-  border-radius: 20px;
-  border-style: solid;
-  border-width: 2px;
-  border-color: rgba(0, 0, 0, 0.10);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.project-details-x:hover {
-  background-color: rgba(255, 255, 255, 0.25);
-}
-
-.project-details-x-text {
-  font-family: "Roboto", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-  user-select: none;
-}
-
 .project-card {
   aspect-ratio: 1;
 
@@ -106,4 +80,47 @@
   font-family: "Roboto", sans-serif;
   font-weight: 700;
   font-style: normal;
+}
+
+/* Content inside project description */
+.project-details-x {
+  width: 30;
+  height: 30;
+
+  border-radius: 20px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgba(0, 0, 0, 0.10);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-details-x:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+.project-details-x-text {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  user-select: none;
+}
+.project-details-header {
+  display: flex;
+  align-self: stretch;
+  flex-direction: row;
+  align-items: start;
+}
+.figure_row {
+  display: flex;
+}
+.project_figure {
+  flex: 1;
+  margin: 10 10;
+}
+.figure_image {
+  width: 100%;
+  height: auto;
 }
