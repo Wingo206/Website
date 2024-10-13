@@ -11,10 +11,14 @@ let projects = [
     },
     {
         name: "Mr. Pizza",
-        tags: ["Node.js", "SQL", "NLP", "HTML", "Javascript"]
+        tags: ["Node.js", "SQL", "NLP", "HTML", "Javascript", "REST", "Google Maps", "Stripe", "Bcrypt"],
+        start_date: "January 2024",
+        end_date: "May 2024"
     },
     {
         name: "Perceptron and Neural Network",
+        tags: ["Machine Learning", "MATLAB", "Perceptron", "Multilayered Perceptron"],
+        start_date: "April 2024"
     },
     {
         name: "RU On Time",
