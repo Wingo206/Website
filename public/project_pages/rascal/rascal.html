@@ -1,0 +1,114 @@
+<p>RASCAL (Robotic Autonomous Scale Car for Adaptive Learning) is a custom 3d-printed scale car platform built for
+    autonomous vehicle research.</p>
+
+<p>Components:</p>
+<ul>
+    <li>Software framework created with Python and ROS to enable high-level control of RASCAL. Covers low-level sensor
+        and actuator control through Arduino and USB Serial.</li>
+    <br>
+
+    <li>Custom design to implement ackerman steering and rear differential on a 14:1 scale with 3d printing.</li>
+    <br>
+
+    <li>Full data pipeline for CNN model for autonomous driving</li>
+    <ul>
+        <li>Data processing from raw position and control signals</li>
+        <li>Custom replay viewer to verify, edit, and remove data</li>
+        <li>Data augmentation using image skewing to approximate homography</li>
+        <li>Hyperparameter optimization using Dragonfly</li>
+        <li>Model takes camera data and outputs lookahead points which are aggregated to form a spline, followed by pure
+            pursuit control.</li>
+    </ul>
+    <br>
+
+    <li>ROS Web Display - a modular GUI created with Flask and JavaScript</li>
+    <ul>
+        <li>Enables real-time control with joystick integration</li>
+        <li>2d data visualization and capability for interactive applications such as path planning</li>
+        <li>Live camera feed</li>
+        <li>3d perspective visualization using perspective warping, overlaid on the camera</li>
+        <li>remote execution of user-defined commands</li>
+        <li>Button mapping from joystick to commands</li>
+        <li>fuzzy search of commands, command pinning</li>
+    </ul>
+    <br>
+
+    <li>Utilized an efficient workflow on remote Linux machines using SSH, terminal-based editors, and shell commands
+    </li>
+    <br>
+
+    <li>Presented technical progress, methodology, and significance in weekly updates and a final open-house event</li>
+    <br>
+
+</ul>
+
+<a href="https://www.orbit-lab.org/wiki/Other/Summer/2024/sD">Project Wiki Page</a>
+<a href="https://docs.google.com/presentation/d/1BD8JX4Ae1Kz0XY-3HhBNbb8Rb7mBVLC3lir2pFV_uCw/edit?usp=sharing">Project Poster</a>
+<a href="https://docs.google.com/presentation/d/1vV-0mkJx5gVDuq54eaxHmNV1Y8u2e3aYG3RSviUIRZI/edit?usp=sharing">Presentation</a>
+
+
+<h2 class="section-subheader">Gallery</h2>
+
+<div class="figure_row">
+    <figure class="project_figure">
+        <img class="figure_image" src="project_pages/rascal/rascal.png">
+        <figcaption>RASCAL in real life</figcaption>
+    </figure>
+    <figure class="project_figure">
+        <img class="figure_image" src="project_pages/rascal/cad.png">
+        <figcaption>RASCAL CAD</figcaption>
+    </figure>
+</div>
+
+<div class="figure_row">
+    <figure class="project_figure">
+        <img class="figure_image" src="project_pages/rascal/architecture.png">
+        <figcaption>System architecture</figcaption>
+    </figure>
+    <figure class="project_figure">
+        <img class="figure_image" src="project_pages/rascal/simulation.gif">
+        <figcaption>Simulation using image augmentation</figcaption>
+    </figure>
+</div>
+
+<figure class="project_figure">
+    <img class="figure_image" src="project_pages/rascal/augmentation.png">
+    <figcaption>Data Augmentation - homography is simulated by skewing the bottom of the image</figcaption>
+</figure>
+
+<h2 class="section-subheader">Web Display</h2>
+
+<div class="figure_row">
+    <figure class="project_figure">
+        <img class="figure_image" src="project_pages/rascal/fuzzy_search.gif">
+        <figcaption>Fuzzy search for commands in the Web Display</figcaption>
+    </figure>
+    <figure class="project_figure">
+        <img class="figure_image" src="project_pages/rascal/joy_binding.gif">
+        <figcaption>Controller button to command binding in the Web Display</figcaption>
+    </figure>
+</div>
+<figure class="project_figure">
+    <img class="figure_image" src="project_pages/rascal/2d3d_replay.gif">
+    <figcaption>2D and 3D-projected visualization of car pose and captured footage</figcaption>
+</figure>
+
+<h2 class="section-subheader">Posters</h2>
+
+<figure class="project_figure">
+    <img class="figure_image" src="project_pages/rascal/poster_2024.png">
+    <figcaption>Project poster 2024</figcaption>
+</figure>
+<figure class="project_figure">
+    <img class="figure_image" src="project_pages/rascal/poster_2023a.png">
+    <figcaption>Project poster 2023 - RASCAL</figcaption>
+</figure>
+<figure class="project_figure">
+    <img class="figure_image" src="project_pages/rascal/poster_2023b.png">
+    <figcaption>Project poster 2023 - MIMIC and web display</figcaption>
+</figure>
+<figure class="project_figure">
+    <img class="figure_image" src="project_pages/rascal/poster_2022.png">
+    <figcaption>Project poster 2023 - Car hardware design</figcaption>
+</figure>
+

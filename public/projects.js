@@ -4,30 +4,43 @@ let numColumns = 3;
 let selectedIndex = -1;
 let projects = [
     {
+        id: "rascal",
         name: "RASCAL",
         tags: ["Linux", "ROS", "Python", "PyTorch", "OpenCV", "Flask", "Virtual Box"],
         start_date: "May 2022",
         end_date: "August 2024"
     },
     {
+        id: "mr_pizza",
         name: "Mr. Pizza",
         tags: ["Node.js", "SQL", "NLP", "HTML", "Javascript", "REST", "Google Maps", "Stripe", "Bcrypt"],
         start_date: "January 2024",
         end_date: "May 2024"
     },
     {
-        name: "Perceptron and Neural Network",
-        tags: ["Machine Learning", "MATLAB", "Perceptron", "Multilayered Perceptron"],
-        start_date: "April 2024"
+        id: "musik",
+        name: "Musik",
+        tags: ["Pygame", "OpenCV", "Arduino", "ArUco detection", "Camera calibration"],
+        start_date: "January 2024",
+        end_date: "May 2024"
+    },
+    {
+        id: "a_star",
+        name: "A* Algorithm Showcase",
+        tags: ["JavaScript", "A*", "Maze Generation"],
+        start_date: "February 2024"
     },
     {
         name: "RU On Time",
     },
     {
-        name: "Musik",
+        name: "Recyclinator",
     },
     {
-        name: "Recyclinator",
+        id: "perceptron",
+        name: "Perceptron and Neural Network",
+        tags: ["Machine Learning", "MATLAB", "Perceptron", "Multilayered Perceptron"],
+        start_date: "April 2024"
     },
     {
         name: "Cougar Script Editor",
@@ -47,9 +60,6 @@ let projects = [
     {
         name: "Robo James",
     },
-    {
-        name: "A* Algorithm Showcase",
-    }
 ];
 
 // populate the projects with data
@@ -138,7 +148,7 @@ window.updateProjectsDisplay = async (index) => {
 
     // page contents
     let detailsHTML = await new Promise(resolve => {
-        fetch(`project_pages/${project.name}.html`).then((res) => resolve(res.text()))
+        fetch(`project_pages/${project.id}/${project.id}.html`).then((res) => resolve(res.text()))
     })
     detailsString += detailsHTML
 
