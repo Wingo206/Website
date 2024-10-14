@@ -31,7 +31,11 @@ let projects = [
         start_date: "February 2024"
     },
     {
+        id: "ru_on_time",
         name: "RU On Time",
+        tags: ["Flutter", "Firebase", "Android"],
+        start_date: "September 2021",
+        end_date: "December 2021"
     },
     {
         name: "Recyclinator",
