@@ -31,14 +31,18 @@ let projects = [
         start_date: "February 2024"
     },
     {
+        id: "recyclinator",
+        name: "The Recyclinator",
+        tags: ["Arduino", "Flutter", "Fusion 360", "Computer Vision"],
+        start_date: "January 2023",
+        end_date: "May 2023"
+    },
+    {
         id: "ru_on_time",
         name: "RU On Time",
         tags: ["Flutter", "Firebase", "Android"],
         start_date: "September 2021",
         end_date: "December 2021"
-    },
-    {
-        name: "Recyclinator",
     },
     {
         id: "perceptron",
@@ -47,23 +51,31 @@ let projects = [
         start_date: "April 2024"
     },
     {
+        id: "cse",
         name: "Cougar Script Editor",
+        tags: ["Java", "FRC", "JSON"],
+        start_date: "January 2019",
+        end_date: "June 2020"
     },
     {
+        id: "laser_turret",
         name: "Autonomous Laser Turret",
+        tags: ["Raspberry Pi", "Python", "Bluetooth", "Flutter", "Computer Vision", "Canny Edge Detection", "Hough Transform"],
+        start_date: "September 2020",
+        end_date: "June 2021",
     },
-    {
-        name: "Photo Gallery",
-    },
-    {
-        name: "Chess App",
-    },
-    {
-        name: "Flight Reservation",
-    },
-    {
-        name: "Robo James",
-    },
+    // {
+    //     name: "Photo Gallery",
+    // },
+    // {
+    //     name: "Chess App",
+    // },
+    // {
+    //     name: "Flight Reservation",
+    // },
+    // {
+    //     name: "Robo James",
+    // },
 ];
 
 // populate the projects with data

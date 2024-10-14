@@ -1,0 +1,64 @@
+<p>The Autonomous Laser Turret is a system that uses an algorithm to detect circles with a camera. Once a circle has
+    been detected, servos aim a laser turret to lock onto the center of the circle.</p>
+
+<p>System overview:</p>
+<ul>
+    <li>Flutter app on mobile phone takes video through the rear camera</li>
+    <br>
+
+    <li>Configuration on the app UI allows enabling of different stages of the detection algorithm</li>
+    <br>
+
+    <li>Canny edge detection algorithm is applied to find edges in the image (grayscale conversion, gaussian blur,
+        gradient calculation, threshold and thinning)</li>
+    <br>
+
+    <li>Hough transform is applied to find the most likely centers for circles of various radii</li>
+    <br>
+
+    <li>Position of circle center in screen coordinates is sent through bluetooth to the raspberry pi</li>
+    <br>
+
+    <li>Raspberry pi converts into servo angles and aims the laser at the center of the circle</li>
+    <br>
+
+    <li>Entire process loops to continuously track the object</li>
+    <br>
+
+</ul>
+
+<a href="https://github.com/Wingo206/laser_turret_app">GitHub</a>
+
+<h2 class="section-subheader">Gallery</h2>
+
+<figure class="project_figure">
+    <img class="figure_image" src="project_pages/laser_turret/laser_turret_irl.png">
+    <figcaption>The Mobile Laser Turret</figcaption>
+</figure>
+
+<div class="figure_row">
+    <figure class="project_figure">
+        <img class="figure_image" src="project_pages/laser_turret/edge_gradients.png">
+        <figcaption>Edge gradient magnitudes</figcaption>
+    </figure>
+    <figure class="project_figure">
+        <img class="figure_image" src="project_pages/laser_turret/edges_thresholded.png">
+        <figcaption>Thresholded edges</figcaption>
+    </figure>
+</div>
+
+<div class="figure_row">
+    <figure class="project_figure">
+        <img class="figure_image" src="project_pages/laser_turret/detect_ball.png">
+        <figcaption>Edge gradient Detecting a ball</figcaption>
+    </figure>
+    <figure class="project_figure">
+        <img class="figure_image" src="project_pages/laser_turret/detect_black.png">
+        <figcaption>Detecting a black circle</figcaption>
+    </figure>
+</div>
+
+<figure class="project_figure">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/rwEFfkrlGys?si=j_fXebnTgfs4iZon" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <figcaption>Project Presentation</figcaption>
+</figure>
