@@ -168,7 +168,7 @@
   height: 0;
   overflow: hidden;
 }
-.video-container iframe {
+.video-container iframe, video {
   position: absolute;
   top: 0;
   left: 0;
