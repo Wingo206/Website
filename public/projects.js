@@ -6,6 +6,7 @@ let projects = [
     {
         id: "rascal",
         name: "RASCAL",
+        thumbnail: "rascal.png",
         tags: ["Linux", "ROS", "Python", "PyTorch", "OpenCV", "Flask", "Virtual Box"],
         start_date: "May 2022",
         end_date: "August 2024"
@@ -13,6 +14,7 @@ let projects = [
     {
         id: "mr_pizza",
         name: "Mr. Pizza",
+        thumbnail: "chatbot.png",
         tags: ["Node.js", "SQL", "NLP", "HTML", "Javascript", "REST", "Google Maps", "Stripe", "Bcrypt"],
         start_date: "January 2024",
         end_date: "May 2024"
@@ -20,6 +22,7 @@ let projects = [
     {
         id: "musik",
         name: "Musik",
+        thumbnail: "musik_demo.gif",
         tags: ["Pygame", "OpenCV", "Arduino", "ArUco detection", "Camera calibration"],
         start_date: "January 2024",
         end_date: "May 2024"
@@ -27,12 +30,14 @@ let projects = [
     {
         id: "a_star",
         name: "A* Algorithm Showcase",
+        thumbnail: "a_star_demo.gif",
         tags: ["JavaScript", "A*", "Maze Generation"],
         start_date: "February 2024"
     },
     {
         id: "recyclinator",
         name: "The Recyclinator",
+        thumbnail: "irl.jpg",
         tags: ["Arduino", "Flutter", "Fusion 360", "Computer Vision"],
         start_date: "January 2023",
         end_date: "May 2023"
@@ -40,6 +45,7 @@ let projects = [
     {
         id: "ru_on_time",
         name: "RU On Time",
+        thumbnail: "pet_info.png",
         tags: ["Flutter", "Firebase", "Android"],
         start_date: "September 2021",
         end_date: "December 2021"
@@ -53,6 +59,7 @@ let projects = [
     {
         id: "cse",
         name: "Cougar Script Editor",
+        thumbnail: "cse.png",
         tags: ["Java", "FRC", "JSON"],
         start_date: "January 2019",
         end_date: "June 2020"
@@ -60,6 +67,7 @@ let projects = [
     {
         id: "laser_turret",
         name: "Autonomous Laser Turret",
+        thumbnail: "laser_turret_irl.png",
         tags: ["Raspberry Pi", "Python", "Bluetooth", "Flutter", "Computer Vision", "Canny Edge Detection", "Hough Transform"],
         start_date: "September 2020",
         end_date: "June 2021",
@@ -67,6 +75,7 @@ let projects = [
     {
         id: "raytracing",
         name: "3D Rendering and Lighting Engine",
+        thumbnail: "3d_1.png",
         tags: ["Java", "Raytracing"],
         start_date: "June 2020"
     }
@@ -103,6 +112,13 @@ function populateProjects() {
                 <p class="project-title">${project.name}</p>
             </div>`
         );
+
+        // add the thumbnail if available
+        if (project.thumbnail) {
+            projectCard.appendChild(fromHTML(
+                `<img class="project_thumbnail" src="project_pages/${project.id}/${project.thumbnail}">`
+            ))
+        }
 
         columns[i % numColumns].appendChild(projectCard);
         columns[i % numColumns].appendChild(fromHTML(`<div class="projects-spacer"></div>`));
@@ -176,7 +192,7 @@ window.updateProjectsDisplay = async (index) => {
 
     // add to the section
     let details = fromHTML(detailsString)
-    Array.from(details).forEach(n => {console.log(n);projectDetails.appendChild(n)});
+    Array.from(details).forEach(n => {console.log(n); projectDetails.appendChild(n)});
 }
 
 /**
