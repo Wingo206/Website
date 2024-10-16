@@ -64,6 +64,12 @@ let projects = [
         start_date: "September 2020",
         end_date: "June 2021",
     },
+    {
+        id: "raytracing",
+        name: "3D Rendering and Lighting Engine",
+        tags: ["Java", "Raytracing"],
+        start_date: "June 2020"
+    }
     // {
     //     name: "Photo Gallery",
     // },
