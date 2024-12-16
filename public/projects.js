@@ -7,9 +7,17 @@ let projects = [
         id: "rascal",
         name: "RASCAL",
         thumbnail: "rascal.png",
-        tags: ["Linux", "ROS", "Python", "PyTorch", "OpenCV", "Flask", "Virtual Box"],
+        tags: ["Linux", "ROS", "Python", "PyTorch", "Machine Learning", "Computer Vision", "OpenCV", "Flask", "Virtual Box"],
         start_date: "May 2022",
         end_date: "August 2024"
+    },
+    {
+        id: "ditto",
+        name: "DITeTriO",
+        thumbnail: "evaluation_lstm.gif",
+        tags: ["Python", "PyTorch", "Machine Learning", "Perlmutter", "Slurm", "C#", "TETR.IO", "Distributed Deep Learning", "PyGame"],
+        start_date: "September 2024",
+        end_date: "December 2024"
     },
     {
         id: "mr_pizza",
@@ -53,7 +61,7 @@ let projects = [
     {
         id: "perceptron",
         name: "Perceptron and Neural Network",
-        tags: ["Machine Learning", "MATLAB", "Perceptron", "Multilayered Perceptron"],
+        tags: ["Machine Learning", "MATLAB", "Perceptron", "Multilayered Perceptron", "Machine Learning"],
         start_date: "April 2024"
     },
     {
@@ -76,7 +84,7 @@ let projects = [
         id: "raytracing",
         name: "3D Rendering and Lighting Engine",
         thumbnail: "3d_1.png",
-        tags: ["Java", "Raytracing"],
+        tags: ["Java", "Raytracing", "Computer Graphics"],
         start_date: "June 2020"
     }
     // {

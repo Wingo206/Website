@@ -1,0 +1,44 @@
+<p>DITeTriO is a project that aims to play the online stacker game TETR.IO while capturing the nuances of human playstyles (hence, DITTO + TETR.IO). Training was done on the Perlmutter supercomputer at NERSC. The project has 3 main components: data processing, model architecture, and evaluation.</p>
+
+<p>Data processing</p>
+    <ul>
+        <li>Uses the open source <a href=https://github.com/MinoMuncher/TetrioVirtualEnvironment>TetrioVirtualEnvironment</a> to process replay files </li>
+        <li>Dataset of 1 month of top 100 players’ games</li>
+        <li>C# data preprocessor which converts replays from action sequences into sequences of game state and action pairs</li>
+    </ul>
+
+    <p>Model architecture</p>
+    <ul>
+        <li>CNN to extract features from 2d board</li>
+        <li>LSTM to extract time-series features from button presses over time</li>
+        <li>Combined features are put through linear layers to decide on probabilities for each button being pressed next</li>
+    </ul>
+
+    <p>Evaluation</p>
+    <ul>
+        <li>Board state visualizer made in PyGame to display input states and predicted button probabilities</li>
+        <li>Live communication with Tetrio Virtual Environment using a C# interface and inter-process communication to Python</li>
+        <li>Visualization of live state as the trained model interacts with the virtual environment</li>
+    </ul>
+
+    <p>Results</p>
+    <ul>
+        <li>The model has a difficult time making good stacking decisions due to the granularity of the action space compared to the overall goal</li>
+        <li>Generalization was difficult to achieve since the chosen representation for the pieces didn’t capture their spacial properties well</li>
+        <li>More work will be done to experiment with better state representations since the framework and pipeline for training and data processing are complete.</li>
+
+    </ul>
+
+<a href="https://github.com/Wingo206/DITeTriO">Project GitHub Page</a>
+
+<h2 class="section-subheader">Gallery</h2>
+
+<figure class="project_figure">
+    <img class="figure_image" src="project_pages/ditto/evaluation_lstm.gif">
+    <figcaption>Evaluation of the model with a <b>ground-truth replay</b>. Brightness of the buttons indicates the predicted probability of that button being pressed.</figcaption>
+</figure>
+
+<figure class="project_figure">
+    <img class="figure_image" src="project_pages/ditto/simulation.gif">
+    <figcaption>Simulation of the model's predicted actions. Bad at generalizing and deviates from a ground-truth replay quickly.</figcaption>
+</figure>
